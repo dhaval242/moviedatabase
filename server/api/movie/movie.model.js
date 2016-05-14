@@ -5,8 +5,12 @@ var mongoose = require('mongoose'),
 
 var MovieSchema = new Schema({
   name: String,
+  rating: Number,
   director: String,
-  year: Number,
+  release: Number,
+  plot:String,
+  trailer:String, // url
+  image:String,
   starring: [{name : String}]
 });
 

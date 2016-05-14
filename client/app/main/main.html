@@ -1,28 +1,93 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<style>
+
+.header{
+	height:150 px;
+}
+
+
+.searchform {
+  background:rgba(244,244,244,.79);
+  border: 1px solid #d3d3d3;
+	left: 50%;
+  padding: 2px 5px;
+  position: absolute;
+	margin: -22px 0 0 -170px;
+	top: 90%;
+  width:400px;
+  box-shadow:0 4px 4px rgba(0,0,0,.37);
+  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px
+}
+
+
+.mdl-card {
+  width: 100%;
+  background-color: #ff6;
+}
+
+.mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+}
+
+.mdl-card__title {
+  color: #554;
+  height: 320px;
+  
+}
+
+.mdl-card__supporting-text {
+  align-items: right;
+  
+}
+
+.mdl-card__menu {
+  height:712px;
+  color: #fff;
+}
+
+
+</style>
+
+<!--<div ng-include="'components/navbar/navbar.html'"></div>-->
 
 <header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
+ 	<h1>Find Your Favourite Movies !</h1>
+ 	<form class="searchform ">
+  		
+      <input ng-model:"search" type="text" placeholder="Movie Name ?" style="color:black;">
+  		<button type="submit" ng-click="onSearch()" style="color:black;">Search</button>
+	</form>
 </header>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div ng-controller="MainCtrl as main">
+  <div ng-repeat = "product in products | orderBy : 'rating' | limitTo:10">
+    
+  <div class="mdl-grid">
+	
+  <div class="mdl-card" style="padding:10px;">	
+	  
+	  <div class="mdl-card__title" style="background:url('assets/images/download.jpg') center / cover;">
+	    <h2 class="mdl-card__title-text">{{product.name}}</h2>
+	  </div>
+	  
+	  <div class="mdl-card__supporting-text">
+	    Rating : {{ product.rating }}<br> 
+      Director : {{ product.director}}
+	  </div>
+	  
+	  <div class="mdl-card__menu">
+	  </div>
 
+  	</div>
+  </div>
+
+</div>
+</div>
 <footer class="footer">
   <div class="container">
-      <p>Angular Fullstack v2.1.1 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
   </div>
 </footer>
