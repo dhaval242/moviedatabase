@@ -14,14 +14,18 @@ angular.module('myfolderApp')
 
     
     $scope.onSearch=function(){
-        console.log(String($scope.search));       
-        $http.get('http://localhost:9000/api/movies/'+String($scope.search))
+        console.log($scope.search);       
+        
+        $http.get('http://localhost:9000/api/movies/'+$scope.search)
         .success(function(data) {
-            
-          $scope.products = data;
-          console.log(JSON.stringify(data));
+          if (data.length === 0){
+            console.log("Not Found");
+          }
+          else{
+            console.log("Success");
+          }
           
-          })
+        });
     }
 
     $scope.addThing = function() {

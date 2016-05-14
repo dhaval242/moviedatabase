@@ -18,7 +18,7 @@ exports.findbyName = function(req, res) {
     if(err) { return handleError(res, err); }
     if(!movie) { 
       console.log("NOT FOUND");
-      return res.status(404).send('Not Found'); 
+      return res.status(404).json('Not Found'); 
     }
     
     return res.json(movie);
