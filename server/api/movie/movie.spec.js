@@ -4,7 +4,7 @@ var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
 
-describe('GET /api/movies', function() {
+describe('TESTING', function() {
 
   it('should respond with JSON array', function(done) {
     request(app)
@@ -17,4 +17,18 @@ describe('GET /api/movies', function() {
         done();
       });
   });
+
+  it ('should add a movie', function(done){
+    request(app)
+    .post('/api/movies')
+    .expect(201)
+    .send({'name':'X-Men'})
+    .end(function(err, res){
+      if (err) return done(err);
+      res.body.should.be.instanceof(Object);
+      res.body.name.should.equal('X-Men');
+      done();
+    }); 
+  });
+
 });
