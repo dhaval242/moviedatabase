@@ -4,20 +4,24 @@
 	height:150 px;
 }
 
+.mdl-button {
+
+}
+
 
 .searchform {
   background:rgba(244,244,244,.79);
-  border: 1px solid #d3d3d3;
+  border: 2px solid #d3d3d3;
 	left: 50%;
   padding: 2px 5px;
-  position: absolute;
+  position: relative;
 	margin: -22px 0 0 -170px;
 	top: 90%;
-  width:400px;
+  width:500px;
   box-shadow:0 4px 4px rgba(0,0,0,.37);
   -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
   -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  border-radius: 10px;
+  border-radius: 15px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
 }
@@ -25,7 +29,7 @@
 
 .mdl-card {
   width: 100%;
-  background-color: #ff6;
+  background-color: #000;
 }
 
 .mdl-card__actions {
@@ -41,6 +45,7 @@
 
 .mdl-card__supporting-text {
   align-items: right;
+  color: #fff
   
 }
 
@@ -55,36 +60,44 @@
 <!--<div ng-include="'components/navbar/navbar.html'"></div>-->
 
 <header class="hero-unit" id="banner">
- 	<h1>Find Your Favourite Movies !</h1>
+ 	<em class="pull-right">
+    <!-- Colored FAB button with ripple -->
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="onAdd()">
+      <i class="material-icons">+</i>
+    </button>
+  </em>
+  <h1>Find Your Favourite Movies !</h1>
  	<form class="searchform ">
-      <input type="text" placeholder="Movie Name ?" ng-model="search"  style="color:black;">
+      <input type="text" placeholder="Movie Name ?" ng-model="search" size="35"  style="color:black;">
   		<button type="submit" ng-click="onSearch()" style="color:black;">Search</button>
 	</form>
+  
 </header>
 
 <div ng-controller="MainCtrl as main">
   <div ng-repeat = "product in products | orderBy : 'rating' | limitTo:10">
-    
-  <div class="mdl-grid">
-	
-  <div class="mdl-card" style="padding:10px;">	
-	  
-	  <div class="mdl-card__title" style="background:url('assets/images/download.jpg') center / cover;">
-	    <h2 class="mdl-card__title-text">{{product.name}}</h2>
-	  </div>
-	  
-	  <div class="mdl-card__supporting-text">
-	    Rating : {{ product.rating }}<br> 
-      Director : {{ product.director}}
-	  </div>
-	  
-	  <div class="mdl-card__menu">
-	  </div>
+      
+    <div class="mdl-grid">
+  	
+    <div class="mdl-card" ng-click="viewMovie(product)" style="padding:10px;">	
+  	  
+  	  <div class="mdl-card__title" style="background:url('assets/images/d.jpg') center / cover;">
+  	    <h2 class="mdl-card__title-text"></h2>
+  	  </div>
+  	  
+  	  <div class="mdl-card__supporting-text">
+  	    Name : {{product.name}}
+        <em class="pull-right"> {{product.rating}} </em><br>
+        Director : {{ product.director}}
+  	  </div>
+  	  
+  	  <div class="mdl-card__menu">
+  	  </div>
 
-  	</div>
+    	</div>
+    </div>
+
   </div>
-
-</div>
 </div>
 <footer class="footer">
   <div class="container">

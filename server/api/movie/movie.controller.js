@@ -14,7 +14,7 @@ exports.index = function(req, res) {
 
 exports.findbyName = function(req, res) {
   var query = {name : req.params.name}
-  Movie.find(query, function (err, movie) {
+  Movie.findOne(query, function (err, movie) {
     if(err) { return handleError(res, err); }
     if(!movie) { 
       console.log("NOT FOUND");

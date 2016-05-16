@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myfolderApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $location) {
 
     $scope.products = [];
     $scope.name = 'Dhaval';
@@ -19,14 +19,24 @@ angular.module('myfolderApp')
         $http.get('http://localhost:9000/api/movies/'+$scope.search)
         .success(function(data) {
           if (data.length === 0){
-            console.log("Not Found");
+           	alert('No Movies Found'); 
           }
           else{
-            console.log("Success");
+            $location.path('/view/'+data.name);
           }
           
+        })
+        .error(function(){
+        	alert('No Movies Found'); 
         });
     }
+    $scope.onAdd=function(){
+    	$location.path('/add');
+    }
+
+    $scope.viewMovie=function(product){
+          $location.path('/view/'+product.name);
+        };
 
     $scope.addThing = function() {
       if($scope.newThing === '') {

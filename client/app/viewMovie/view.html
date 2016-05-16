@@ -1,0 +1,59 @@
+<style>
+
+.header{
+  height:150 px;
+}
+.mdl-card {
+  width: 100%;
+  height: 760px;
+  background-color: #000;
+}
+
+.mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+}
+
+.mdl-card__title {
+  color: #554;
+  height: 350px;
+  
+}
+
+.mdl-card__supporting-text {
+  align-items: right;
+  color: #fff
+  
+}
+
+.mdl-card__menu {
+  height:712px;
+  color: #fff;
+}
+
+
+</style>
+
+<div ng-controller="viewCtrl as view">
+  <div class="mdl-grid">
+    
+    <div class="mdl-card" style="padding:10px;">  
+      
+      <div class="mdl-card__title" style="background:url('assets/images/d.jpg') center / cover;">
+        <h2 class="mdl-card__title-text"></h2>
+      </div>
+      
+      <div class="mdl-card__supporting-text">
+        Name : {{product.name}}
+        <em class="pull-right"> {{product.rating}} </em><br>
+        Director : {{ product.director}}<br>
+        Watch Trailer <a href={{product.trailer}}> HERE </a><br>
+        Plot <br> {{ product.plot }}
+      </div>
+      
+      <div class="mdl-card__menu">
+      </div>
+
+    </div>
+  </div>
+</div>
